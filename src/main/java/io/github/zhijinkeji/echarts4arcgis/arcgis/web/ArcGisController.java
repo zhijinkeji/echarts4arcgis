@@ -30,7 +30,7 @@ public class ArcGisController {
     @Autowired
     public HttpServletResponse response;
 
-    @GetMapping("/echarts4arcgis/arcgis/greeting")
+    @GetMapping("/echarts4arcgis/arcgis/checkalive")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "echarts4arcgis/arcgis/greeting";
@@ -39,8 +39,21 @@ public class ArcGisController {
 
     @GetMapping(value = "/webjars/echarts4arcgis/gis/bootstrap", produces = "text/javascript;charset=UTF-8")
     public void bootstrap(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        boolean result = this.getResponse("/webjars/echarts4arcgis/gis/init.js", response);
-        System.out.println("result : " + result);
+        try {
+            ServletOutputStream os = response.getOutputStream();
+//          String buf = "var webapp_rootpath = \"http://localhost:8080/eplat/webjars/echarts4arcgis/gis/\";";
+            //  String basePath = "http://localhost:8080/eplat";
+            String path = request.getContextPath();
+            String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+            System.out.println(basePath);
+            String buf = "var webapp_rootpath = \"" + basePath + "/webjars/echarts4arcgis/gis/\";";
+            byte[] byt = buf.getBytes();
+            os.write(byt);
+            boolean result = this.getResponse("/webjars/echarts4arcgis/gis/init.js", os);
+            // System.out.println("result : " + result);
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
