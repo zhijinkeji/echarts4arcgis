@@ -24,21 +24,17 @@ import java.io.OutputStream;
 
 @Controller
 public class ArcGisController {
-    @Autowired
-    public HttpServletRequest request;
 
-    @Autowired
-    public HttpServletResponse response;
 
     @GetMapping("/echarts4arcgis/arcgis/checkalive")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model, HttpServletRequest request, HttpServletResponse response) {
         model.addAttribute("name", name);
         return "echarts4arcgis/arcgis/greeting";
     }
 
 
     @GetMapping(value = "/webjars/echarts4arcgis/gis/bootstrap", produces = "text/javascript;charset=UTF-8")
-    public void bootstrap(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+    public void bootstrap(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
             ServletOutputStream os = response.getOutputStream();
 //          String buf = "var webapp_rootpath = \"http://localhost:8080/eplat/webjars/echarts4arcgis/gis/\";";
