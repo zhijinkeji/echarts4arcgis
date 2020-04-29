@@ -27,7 +27,7 @@ public class ArcGisController {
 
 
     @GetMapping("/echarts4arcgis/arcgis/checkalive")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "I am alive") String name, Model model, HttpServletRequest request, HttpServletResponse response) {
         model.addAttribute("name", name);
         return "echarts4arcgis/arcgis/greeting";
     }
