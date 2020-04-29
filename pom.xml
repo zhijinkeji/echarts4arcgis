@@ -14,6 +14,28 @@
     <name>echarts4arcgis</name>
     <description>ECharts for ArcGIS</description>
 
+
+    <url>https://github.com/zhijinkeji/echarts4arcgis</url>
+    <licenses>
+        <license>
+            <name>MIT Licence</name>
+            <url>https://github.com/zhijinkeji/echarts4arcgis/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>zhijinkeji</id>
+            <name>zhijinkeji</name>
+            <email>iamabcdefg123456@126.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>https://github.com/zhijinkeji/echarts4arcgis.git</connection>
+        <developerConnection>git@github.com:zhijinkeji/echarts4arcgis.git</developerConnection>
+        <url>https://github.com/zhijinkeji/echarts4arcgis</url>
+    </scm>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
