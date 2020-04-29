@@ -32,6 +32,13 @@ public class ArcGisController {
         return "echarts4arcgis/arcgis/greeting";
     }
 
+String license="/*\n" +
+        "\tCopyright (c) 2004-2016, The JS Foundation All Rights Reserved.\n" +
+        "\tAvailable via Academic Free License >= 2.1 OR the modified BSD license.\n" +
+        "\tsee: http://dojotoolkit.org/license for details\n" +
+        "*/\n" +
+        "\n" +
+        "//>>built";
 
     @GetMapping(value = "/webjars/echarts4arcgis/gis/bootstrap", produces = "text/javascript;charset=UTF-8")
     public void bootstrap(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model, HttpServletRequest request, HttpServletResponse response) {
@@ -42,7 +49,7 @@ public class ArcGisController {
             String path = request.getContextPath();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
             System.out.println(basePath);
-            String buf = "var webapp_rootpath = \"" + basePath + "/webjars/echarts4arcgis/gis/\";";
+            String buf = license+"\nvar webapp_rootpath = \"" + basePath + "/webjars/echarts4arcgis/gis/\";";
             byte[] byt = buf.getBytes();
             os.write(byt);
             boolean result = this.getResponse("/webjars/echarts4arcgis/gis/init.js", os);
