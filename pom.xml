@@ -35,6 +35,7 @@
         <developerConnection>git@github.com:zhijinkeji/echarts4arcgis.git</developerConnection>
         <url>https://github.com/zhijinkeji/echarts4arcgis</url>
     </scm>
+    <!--
     <servers>
         <server>
             <id>maven-snapshots</id> // 快照仓库 ID
@@ -47,6 +48,7 @@
             <password>admin1234</password>
         </server>
     </servers>
+    -->
     <properties>
         <java.version>1.8</java.version>
     </properties>

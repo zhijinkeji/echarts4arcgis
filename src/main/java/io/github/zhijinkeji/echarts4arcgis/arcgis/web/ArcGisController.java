@@ -48,7 +48,7 @@ String license="/*\n" +
             //  String basePath = "http://localhost:8080/eplat";
             String path = request.getContextPath();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
-            System.out.println(basePath);
+         //   System.out.println(basePath);
             String buf = license+"\nvar webapp_rootpath = \"" + basePath + "/webjars/echarts4arcgis/gis/\";";
             byte[] byt = buf.getBytes();
             os.write(byt);
