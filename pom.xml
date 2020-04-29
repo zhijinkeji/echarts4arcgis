@@ -27,7 +27,7 @@
         <developer>
             <id>zhijinkeji</id>
             <name>zhijinkeji</name>
-            <email>iamabcdefg123456@126.com</email>
+            <email>zhijinkeji@126.com</email>
         </developer>
     </developers>
     <scm>
@@ -35,7 +35,18 @@
         <developerConnection>git@github.com:zhijinkeji/echarts4arcgis.git</developerConnection>
         <url>https://github.com/zhijinkeji/echarts4arcgis</url>
     </scm>
-
+    <servers>
+        <server>
+            <id>maven-snapshots</id> // 快照仓库 ID
+            <username>zhijinkeji</username>
+            <password>admin1234</password>
+        </server>
+        <server>
+            <id>maven-releases</id> // 发布仓库 ID
+            <username>zhijinkeji</username>
+            <password>admin1234</password>
+        </server>
+    </servers>
     <properties>
         <java.version>1.8</java.version>
     </properties>
