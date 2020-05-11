@@ -32,13 +32,13 @@ public class ArcGisController {
         return "echarts4arcgis/arcgis/greeting";
     }
 
-String license="/*\n" +
-        "\tCopyright (c) 2004-2016, The JS Foundation All Rights Reserved.\n" +
-        "\tAvailable via Academic Free License >= 2.1 OR the modified BSD license.\n" +
-        "\tsee: http://dojotoolkit.org/license for details\n" +
-        "*/\n" +
-        "\n" +
-        "//>>built";
+    String license = "/*\n" +
+            "\tCopyright (c) 2004-2016, The JS Foundation All Rights Reserved.\n" +
+            "\tAvailable via Academic Free License >= 2.1 OR the modified BSD license.\n" +
+            "\tsee: http://dojotoolkit.org/license for details\n" +
+            "*/\n" +
+            "\n" +
+            "//>>built";
 
     @GetMapping(value = "/webjars/echarts4arcgis/gis/bootstrap", produces = "text/javascript;charset=UTF-8")
     public void bootstrap(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model, HttpServletRequest request, HttpServletResponse response) {
@@ -48,8 +48,8 @@ String license="/*\n" +
             //  String basePath = "http://localhost:8080/eplat";
             String path = request.getContextPath();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
-         //   System.out.println(basePath);
-            String buf = license+"\nvar webapp_rootpath = \"" + basePath + "/webjars/echarts4arcgis/gis/\";";
+            //   System.out.println(basePath);
+            String buf = license + "\nvar webapp_rootpath = \"" + basePath + "/webjars/echarts4arcgis/gis/\";";
             byte[] byt = buf.getBytes();
             os.write(byt);
             boolean result = this.getResponse("/webjars/echarts4arcgis/gis/init.js", os);
@@ -92,8 +92,10 @@ String license="/*\n" +
         return false;
     }
 
-    public boolean getResponse(String path, ServletOutputStream result) {
+    private String finish = "////////////////////////////";
 
+    public boolean getResponse(String path, ServletOutputStream result) {
+        byte[] fbyte = finish.getBytes();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
 
@@ -110,7 +112,23 @@ String license="/*\n" +
 
                 byte[] buffer = new byte[1024];
                 int length;
+                int ind;
+                boolean skip = false;
                 while ((length = is.read(buffer)) != -1) {
+                    if ((buffer[0] == fbyte[0]) && (buffer[1] == fbyte[1]) && (buffer[2] == fbyte[2]) && (buffer[3] == fbyte[3])) {
+                        skip = true;
+                        for (ind = 0; ind < 1024; ind++) {
+                            if (buffer[ind] != fbyte[ind]) {
+                                skip = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (skip) {
+                        break;
+                    }
+
                     result.write(buffer, 0, length);
                 }
 
