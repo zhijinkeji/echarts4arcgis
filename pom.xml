@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -10,57 +10,21 @@
     </parent>
     <groupId>io.github.zhijinkeji</groupId>
     <artifactId>echarts4arcgis</artifactId>
-    <version>8.0.1-RELEASE</version>
+    <version>8.0.5.RELEASE</version>
     <name>echarts4arcgis</name>
     <description>ECharts for ArcGIS</description>
 
 
-    <url>https://github.com/zhijinkeji/echarts4arcgis</url>
-    <licenses>
-        <license>
-            <name>MIT Licence</name>
-            <url>https://github.com/zhijinkeji/echarts4arcgis/master/LICENSE</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <id>zhijinkeji</id>
-            <name>zhijinkeji</name>
-            <email>zhijinkeji@126.com</email>
-        </developer>
-    </developers>
-    <scm>
-        <connection>https://github.com/zhijinkeji/echarts4arcgis.git</connection>
-        <developerConnection>git@github.com:zhijinkeji/echarts4arcgis.git</developerConnection>
-        <url>https://github.com/zhijinkeji/echarts4arcgis</url>
-    </scm>
-    <!--
-    <servers>
-        <server>
-            <id>maven-snapshots</id> // 快照仓库 ID
-            <username>zhijinkeji</username>
-            <password>admin1234</password>
-        </server>
-        <server>
-            <id>maven-releases</id> // 发布仓库 ID
-            <username>zhijinkeji</username>
-            <password>admin1234</password>
-        </server>
-    </servers>
-    -->
+
     <properties>
         <java.version>1.8</java.version>
 
 
-            <keystore.path>/echarts4arcgis.jks</keystore.path>
-            <keystore.type>JKS</keystore.type>
-            <keystore.alias>echarts4arcgis</keystore.alias>
-            <keystore.password>888888</keystore.password>
-            <keystore.store.password>${keystore.password}</keystore.store.password>
-            <keystore.key.password>${keystore.password}</keystore.key.password>
+
 
     </properties>
+
+
 
     <dependencies>
 
@@ -362,45 +326,7 @@
         <plugins>
 
 
-            <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>attach-sources</id>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
-                </execution>
-            </executions>
-            </plugin>
 
-
-            <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-                <!--
-            <version>2.9.1</version>
-
-            <configuration>
-                <reportOutputDirectory>../javadocs</reportOutputDirectory>
-                <destDir>easy-delivery</destDir>
-            </configuration>
-               -->
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jarsigner-plugin</artifactId>
-
-                <version>3.0.0</version>
-                <configuration>
-                    <storetype>${keystore.type}</storetype>
-                    <keystore>${keystore.path}</keystore>
-                    <alias>${keystore.alias}</alias>
-                    <storepass>${keystore.store.password}</storepass>
-                    <keypass>${keystore.key.password}</keypass>
-                </configuration>
-            </plugin>
             <!--
            <plugin>
                <groupId>org.springframework.boot</groupId>
