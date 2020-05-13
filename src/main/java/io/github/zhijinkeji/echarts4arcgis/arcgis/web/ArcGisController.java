@@ -118,7 +118,7 @@ public class ArcGisController {
                     if ((buffer[0] == fbyte[0]) && (buffer[1] == fbyte[1]) && (buffer[2] == fbyte[2]) && (buffer[3] == fbyte[3])) {
                         skip = true;
                         for (ind = 0; ind < 1024; ind++) {
-                            if (buffer[ind] != fbyte[ind]) {
+                            if (buffer[ind] != fbyte[0]) {
                                 skip = false;
                                 break;
                             }
